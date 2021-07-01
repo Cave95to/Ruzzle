@@ -98,6 +98,10 @@ public class FXMLController {
     	}
     		
     	String parola = txtParola.getText() ;
+    	if(parola== null) {
+    		txtResult.setText("Devi inserire parole di almeno 2 lettere");
+    		return;
+    	}
     	if(parola.length() <= 1) {
     		txtResult.setText("Devi inserire parole di almeno 2 lettere");
     		return;
@@ -124,6 +128,12 @@ public class FXMLController {
     @FXML
     void handleReset(ActionEvent event) {
     	model.reset();
+    	// refresh interfaccia grafica
+    	for(Button b : letters.values()) {
+    		b.setDefaultButton(false);
+    	}
+    	this.txtParola.setText(null);
+    	this.txtResult.setText(null);
     }
     
     @FXML
